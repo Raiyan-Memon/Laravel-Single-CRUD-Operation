@@ -73,13 +73,7 @@ class AccountController extends Controller
         return view('account.edit', compact('account'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $account)
     {
         // dd($account);
