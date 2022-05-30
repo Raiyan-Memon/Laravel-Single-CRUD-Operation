@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function __construct()
     {
@@ -23,11 +18,6 @@ class AccountController extends Controller
         return view('account.index', compact('account'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('account.create');
@@ -35,7 +25,6 @@ class AccountController extends Controller
 
     public function store(Request $request)
     {
-        // echo "store";
 
         $request->validate([
             'name' => 'required ',
@@ -55,17 +44,11 @@ class AccountController extends Controller
 
     public function show($account)
     {
-        // dd($account);
+
         $account = Account::find($account);
         return view('account.show', compact('account'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
-     */
     public function edit($account)
     {
         $account = Account::find($account);
@@ -73,17 +56,10 @@ class AccountController extends Controller
         return view('account.edit', compact('account'));
     }
 
-
     public function update(Request $request, $account)
     {
-        // dd($account);
-
-        // dd($account);
 
         $data = Account::find($account);
-        // dd($data);
-
-        // return "this is update";
 
         $data->name = $request->name;
         $data->branch = $request->branch;
@@ -91,21 +67,11 @@ class AccountController extends Controller
         $data->update();
 
         return redirect('crud');
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Account  $account
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        // dd($id);
-        // echo "delete";
         $delete = Account::find($id);
-        // dd($delete);
         $delete->delete();
         return redirect('crud');
     }
